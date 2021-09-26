@@ -1,16 +1,17 @@
 <template>
-    <div>
-        <list-post/>
+    <div class="app">
+        <navigation-bar></navigation-bar>
+        <router-view></router-view> 
     </div>
 </template>
 
 <script>
-import ListPost from '@/component/ListPost.vue'
-import axios from 'axios'
-
-export default {
-    components: { ListPost, axios },
-}
+    import NavigationBar from '@/component/NavigationBar.vue'
+    export default{
+        components: {
+            NavigationBar
+        }
+    }
 </script>
 
 <style>
