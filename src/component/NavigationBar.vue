@@ -23,7 +23,7 @@ export default {
     }
 .btnnavbar{
   display: inline-block;
-  margin-left: 10px;
+  margin: 10px;
   color: rgb(0, 0, 0);
   padding: .5em 2em;
   outline: none;
