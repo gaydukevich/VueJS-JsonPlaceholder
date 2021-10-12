@@ -1,12 +1,12 @@
 <template>
 <div>
     <template v-if="loadData">
-       <post-item :posts="this.posts"/>
+       <post-item :posts="this.posts" :users="this.users"/>
        <div class="page_wrapper" >
            <div 
                 class="page" 
                 v-for="pageNumber in totalPage"
-                :key="pageNumber" 
+                :key=   "pageNumber" 
                 @click="changePage(pageNumber)"
                 :class="{
                     'cureent-page': page === pageNumber}">
@@ -24,7 +24,8 @@
 
 <script>
 import axios from 'axios'
-import PostItem from './PostItem.vue';
+import PostItem from './PostItem.vue'
+
 export default {
     components: {
         PostItem
@@ -33,6 +34,7 @@ export default {
      data() {
         return {
             posts: [{ }],
+            users: [{}],
             loadData: false,
             page: 1,
             limit: 10,
@@ -49,27 +51,39 @@ export default {
                     _limit: this.limit
                 }
             });
+            console.log(response.data);
             this.posts = response.data;
             this.totalPage = Math.ceil(response.headers['x-total-count'] / this.limit);
-        }
-        catch(exeption){
-            console.log(exeption);
-        }
-        finally{
-            this.loadData = true;
-        }
-      },
-      changePage(page){
-        this.page = page;
-        this.loadData = false;
-        this.getPosts();
-      }
+            }
+            catch(exeption){
+                console.log(exeption);
+            }
+            finally{
+                this.loadData = true;
+            }
+        },
+
+        changePage(page){
+            this.page = page;
+            this.loadData = false;
+            this.getPosts();
+        },
+
+        async getUser(){
+            try{
+                const response = await axios.get("https://jsonplaceholder.typicode.com/users/");
+                console.log(response.data);
+                this.users = response.data;
+            }
+            catch(exeption){
+                console.log(exeption);
+            }
+        },
     },
-
     mounted(){  
-        this.getPosts()
+        this.getPosts();
+        this.getUser();
     }
-
 }
 </script>
 
