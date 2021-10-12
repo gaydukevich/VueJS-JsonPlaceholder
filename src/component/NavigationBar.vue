@@ -2,6 +2,7 @@
   <div class="navbar">
     <button class="btnnavbar" @click="$router.push('/')">Главная</button>
     <button class="btnnavbar" @click="$router.push('/PostPage')">Страница с постами</button>
+    <button class="btnnavbar" @click="$router.push('/UserPage')">Страница с пользователями</button>
   </div>
 </template>
 

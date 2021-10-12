@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import ListPost from '@/component/ListPost.vue'
+import ListPost from '@/component/Post/ListPost.vue'
 import axios from 'axios'
 
 export default {

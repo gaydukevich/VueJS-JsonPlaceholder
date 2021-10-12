@@ -23,8 +23,8 @@
 </template>
 
 <script>
-import axios from 'axios'
 import PostItem from './PostItem.vue'
+import axios from 'axios'
 
 export default {
     components: {
